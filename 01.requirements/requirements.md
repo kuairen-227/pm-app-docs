@@ -2,10 +2,11 @@
 marp: true
 paginate: true
 ---
+<!--
+headingDivider: 2
+-->
 
 # プロジェクト管理アプリ 要件定義書
-
----
 
 ## 1. プロジェクト概要
 
@@ -14,15 +15,11 @@ paginate: true
 - 想定ユーザー: 5〜10人規模のチーム
 - 開発方針: 一人プロジェクト、MVPリリース後に拡張可能
 
----
-
 ## 2. 前提条件
 
 - ユーザーはログイン必須
 - 権限は管理者／メンバーで区別
 - MVP段階ではガントチャートや通知機能は未実装
-
----
 
 ## 3. MVP機能範囲
 
@@ -33,16 +30,12 @@ paginate: true
 | Could | 通知、リマインダー |
 | Won't | ガントチャート、ラベル機能 |
 
----
-
 ## 4. 非機能要件
 
 - 対応ブラウザ: Chrome, Edge 最新版
 - データ保存: PostgreSQL
 - 認証方式: JWT
 - API仕様: REST / JSON
-
----
 
 ## 5. 関連成果物リンク
 
@@ -52,8 +45,6 @@ paginate: true
 | ユビキタス言語辞書 | ドメイン用語＋開発補助用語 | [`ubiquitous.md`](./details/ubiquitous.md) |
 | 画面ラフ・遷移図 | Mermaid版、UIスケッチ | [`ui-design.md`](./details/ui-design.md) |
 | APIドラフト仕様 | 画面単位のAPI一覧 | [`api-draft.md`](./details/api-draft.md) |
-
----
 
 ## 6. 注意点・今後の方針
 
