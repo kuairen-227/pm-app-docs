@@ -1,4 +1,9 @@
 {
+    "editor.formatOnSave": true,
+    "editor.trimAutoWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
     "conventionalCommits.scopes": [
         "requirements",
         "workspace",
