@@ -58,6 +58,16 @@ classDiagram
       Status: TicketStatus
       AssigneeId: Guid?
       CompletionCriteria: string?
+      Comments: List<Comment>
+    }
+
+    %% コメント
+    class Comment {
+      <<Entity>>
+      Id: Guid
+      TicketId: Guid
+      AuthorId: Guid
+      Content: string
     }
 
     %% 担当履歴
@@ -103,6 +113,8 @@ classDiagram
   User "1" --> "many" Project : owns
   Project "1" --> "many" Ticket
   User "1" --> "many" Ticket : assigned
+  Ticket "1" *-- "many" Comment : contains
+  User "1" --> "many" Comment : author
   Ticket "1" *-- "many" AssignmentHistory : contains
   User "1" --> "many" Notification
 

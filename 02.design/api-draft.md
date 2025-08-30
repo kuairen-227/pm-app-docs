@@ -22,10 +22,14 @@
 | メソッド | パス | 機能 |
 |-----------|------|------|
 | GET | /projects/{projectId}/tickets | プロジェクト内チケット一覧取得 |
-| PATCH | /projects/{projectId}/tickets/{ticketId} | チケット詳細取得 |
+| GET | /projects/{projectId}/tickets/{ticketId} | チケット詳細取得 |
 | POST | /projects/{projectId}/tickets | チケット作成 |
 | PATCH | /projects/{projectId}/tickets/{ticketId} | チケット編集 |
 | DELETE | /projects/{projectId}/tickets/{ticketId} | チケット削除 |
+| GET | /projects/{projectId}/tickets/{ticketId}/comments | チケットのコメント一覧取得 |
+| POST | /projects/{projectId}/tickets/{ticketId}/comments | チケットにコメント投稿 |
+| PATCH | /projects/{projectId}/tickets/{ticketId}/comments | チケットコメント編集 |
+| DELETE | /projects/{projectId}/tickets/{ticketId}/comments/{commentId} | チケットコメント削除 |
 
 ## ユーザー
 

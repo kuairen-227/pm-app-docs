@@ -8,19 +8,24 @@ flowchart LR
     classDef mvp stroke-dasharray: 0;
     classDef later stroke-dasharray: 4;
 
-    %% MVP画面
+    %% 認証系
     Login[ログインページ]:::mvp
-    Projects[プロジェクト一覧ページ]:::mvp
-    ProjectDetail[プロジェクト詳細ページ]:::mvp
-    TicketModal[チケット作成モーダル]:::mvp
-    TicketStatusUpdate[チケットステータス更新モーダル]:::mvp
     LoginError[ログインエラー表示]:::mvp
 
-    %% 拡張画面
-    Users[ユーザー管理ページ]:::later
-    UserEdit[ユーザー編集モーダル]:::later
+    %% プロジェクト系
+    Projects[プロジェクト一覧ページ]:::mvp
+    ProjectDetail[プロジェクト詳細ページ]:::mvp
+
+    %% チケット系
+    TicketModal[チケット作成モーダル]:::mvp
+    TicketStatusUpdate[チケットステータス更新モーダル]:::mvp
+    TicketDetail[チケット詳細ページ\nコメント統合]:::later
     AssignmentHistory[担当履歴モーダル]:::later
     CompletionCriteria[完了条件設定モーダル]:::later
+
+    %% 管理系
+    Users[ユーザー管理ページ]:::later
+    UserEdit[ユーザー編集モーダル]:::later
     Notifications[通知一覧ページ]:::later
 
     %% 遷移
@@ -37,11 +42,14 @@ flowchart LR
     TicketStatusUpdate --> ProjectDetail
 
     ProjectDetail -->|担当履歴表示| AssignmentHistory
+    ProjectDetail -->|完了条件設定| CompletionCriteria
+
+    ProjectDetail -->|チケット詳細選択| TicketDetail
+    TicketDetail --> ProjectDetail
+    TicketDetail -->|コメント投稿 / 閲覧| TicketDetail
 
     Projects -->|ユーザー管理| Users
     Users -->|権限変更| UserEdit
-
-    ProjectDetail -->|完了条件設定| CompletionCriteria
 
     Projects -->|通知一覧| Notifications
 ```

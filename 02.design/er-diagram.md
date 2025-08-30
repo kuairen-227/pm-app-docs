@@ -35,6 +35,14 @@ erDiagram
         GUID updated_by
         datetime updated_at
     }
+    comments {
+        GUID id PK
+        GUID ticket_id FK
+        GUID author_id FK
+        string content
+        datetime created_at
+        datetime updated_at
+    }
     assignment_history {
         GUID id PK
         GUID ticket_id FK
@@ -61,4 +69,6 @@ erDiagram
     users ||--o{ tickets : "1:n"
     tickets ||--o{ assignment_history : "1:n"
     users ||--o{ notifications : "1:n"
+    tickets ||--o{ comments : "1:n"
+    users ||--o{ comments : "1:n"
 ```
