@@ -30,10 +30,11 @@ classDiagram
     class Role {
       <<ValueObject>>
       Value: RoleType
-      <<RoleType>>
-      Admin
-      Manager
-      Member
+      ---
+      RoleType
+      - Admin
+      - Manager
+      - Member
     }
   }
 
@@ -77,10 +78,11 @@ classDiagram
       AssigneeId: Guid?
       PreviousAsigneeId: Guid?
       ChangedAt: DateTime
-      <<AssignmentEventType>>
-      Assigned
-      UnAssigned
-      Changed
+      ---
+      AssignmentEventType
+      - Assigned
+      - UnAssigned
+      - Changed
     }
 
     %% 値オブジェクト
@@ -95,11 +97,12 @@ classDiagram
     class TicketStatus {
       <<ValueObject>>
       Value: StatusType
-      <<StatusType>>
-      Todo
-      InProgress
-      Resolved
-      Done
+      ---
+      StatusType
+      - Todo
+      - InProgress
+      - Resolved
+      - Done
     }
   }
 
