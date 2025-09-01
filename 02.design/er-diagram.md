@@ -47,6 +47,8 @@ erDiagram
         GUID id PK
         GUID ticket_id FK
         GUID assignee_id FK
+        GUID previous_assignee_id FK
+        string change_type
         datetime changed_at
         GUID created_by
         datetime created_at

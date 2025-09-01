@@ -73,8 +73,14 @@ classDiagram
     %% 担当履歴
     class AssignmentHistory {
       <<ValueObject>>
-      AssigneeId: Guid
-      AssignedAt: DateTime
+      ChangeType: AssignmentEventType
+      AssigneeId: Guid?
+      PreviousAsigneeId: Guid?
+      ChangedAt: DateTime
+      <<AssignmentEventType>>
+      Assigned
+      UnAssigned
+      Changed
     }
 
     %% 値オブジェクト
