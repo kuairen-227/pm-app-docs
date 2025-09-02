@@ -46,12 +46,13 @@ classDiagram
       Name: string
       Description: string?
       OwnerId: Guid
-      CreatedAt: DateTime
     }
+  }
 
+  namespace チケット集約 {
     %% チケット
     class Ticket {
-      <<Entity>>
+      <<AggregateRoot>>
       Id: Guid
       ProjectId: Guid
       Title: TicketTitle
