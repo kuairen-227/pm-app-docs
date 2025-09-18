@@ -33,8 +33,7 @@ classDiagram
       ---
       RoleType
       - Admin
-      - Manager
-      - Member
+      - User
     }
   }
 
@@ -45,7 +44,22 @@ classDiagram
       Id: Guid
       Name: string
       Description: string?
-      OwnerId: Guid
+    }
+
+    %% プロジェクトメンバー
+    class ProjectMember {
+      <<Entity>>
+      ProjectId: Guid
+      UserId: Guid
+      Role: ProjectRole
+    }
+
+    %% 値オブジェクト
+    class ProjectRole {
+      Value: RoleType
+      RoleType
+      - ProjectManager
+      - Member
     }
   }
 
@@ -120,8 +134,9 @@ classDiagram
   "
 
   %% 関連
-  User "1" --> "many" Project : owns
-  Project "1" --> "many" Ticket
+  Project "1" --> "many" Ticket : has
+  User "1" --> "many" ProjectMember : joins
+  Project "1" --> "many" ProjectMember : has
   User "1" --> "many" Ticket : assigned
   Ticket "1" *-- "many" Comment : contains
   User "1" --> "many" Comment : author
@@ -134,4 +149,5 @@ classDiagram
   Ticket --> Deadline
   User --> Role
   Ticket --> TicketStatus
+  ProjectMember --> ProjectRole
 ```

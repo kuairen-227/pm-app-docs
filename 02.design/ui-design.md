@@ -15,6 +15,8 @@ flowchart LR
     %% プロジェクト系
     Projects[プロジェクト一覧ページ]:::mvp
     ProjectDetail[プロジェクト詳細ページ]:::mvp
+    ProjectMembers[プロジェクトメンバー管理ページ]:::later
+    ProjectMemberEdit[メンバー追加/編集モーダル]:::later
 
     %% チケット系
     TicketModal[チケット作成モーダル]:::mvp
@@ -24,7 +26,7 @@ flowchart LR
     CompletionCriteria[完了条件設定モーダル]:::later
 
     %% 管理系
-    Users[ユーザー管理ページ]:::later
+    Users[グローバルユーザー管理ページ]:::later
     UserEdit[ユーザー編集モーダル]:::later
     Notifications[通知一覧ページ]:::later
 
@@ -48,8 +50,11 @@ flowchart LR
     TicketDetail --> ProjectDetail
     TicketDetail -->|コメント投稿 / 閲覧| TicketDetail
 
-    Projects -->|ユーザー管理| Users
-    Users -->|権限変更| UserEdit
+    ProjectDetail -->|メンバー管理| ProjectMembers
+    ProjectMembers -->|追加/編集| ProjectMemberEdit
+
+    Projects -->|ユーザー管理（Admin）| Users
+    Users -->|ユーザー編集| UserEdit
 
     Projects -->|通知一覧| Notifications
 ```

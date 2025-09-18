@@ -16,6 +16,10 @@
 | POST | /projects | プロジェクト作成 |
 | PATCH | /projects/{projectId} | プロジェクト編集 |
 | DELETE | /projects/{projectId} | プロジェクト削除 |
+| GET | /projects/{projectId}/members | プロジェクトメンバー一覧取得 |
+| POST | /projects/{projectId}/members | プロジェクトメンバー追加 |
+| PATCH | /projects/{projectId}/members | プロジェクトメンバーの属性編集 |
+| DELETE | /projects/{projectId}/members | プロジェクトメンバー削除 |
 
 ## チケット
 

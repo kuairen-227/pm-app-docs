@@ -16,11 +16,16 @@ erDiagram
         GUID id PK
         string name
         string description
-        GUID owner_id FK
         GUID created_by
         datetime created_at
         GUID updated_by
         datetime updated_at
+    }
+    project_members {
+        Guid id PK
+        Guid project_id FK
+        Guid user_id FK
+        string role
     }
     tickets {
         GUID id PK
@@ -66,7 +71,8 @@ erDiagram
         datetime updated_at
     }
 
-    users ||--o{ projects : "1:n"
+    users ||--o{ project_members : "1:n"
+    projects ||--o{ project_members : "1:n"
     projects ||--o{ tickets : "1:n"
     users ||--o{ tickets : "1:n"
     tickets ||--o{ assignment_history : "1:n"

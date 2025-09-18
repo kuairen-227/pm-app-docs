@@ -20,6 +20,7 @@ graph LR
         EditProject["プロジェクト編集"]
         DeleteProject["プロジェクト削除"]
         ViewProject["プロジェクト一覧 / 詳細表示"]
+        ManageMember["プロジェクトメンバー管理"]
     end
 
     %% チケット管理
@@ -33,7 +34,7 @@ graph LR
         SetCompletionCriteria["完了条件設定"]
     end
 
-    %% サブグループ：ユーザー管理
+    %% ユーザー管理
     subgraph UserManagement["ユーザー管理"]
         ManageUsers["ユーザー管理"]
     end
@@ -60,15 +61,9 @@ graph LR
     PM --> AssignTicket
     PM --> SetCompletionCriteria
     PM --> AddComment
+    PM --> ManageMember
 
     Admin --> ManageUsers
 
     System --> Notify
-
-    %% 疑似 include / extend
-    CreateProject --> CreateTicket
-    AssignTicket --> Notify
-    UpdateTicketStatus --> Notify
-    AssignTicket --> ViewAssignmentHistory
-    AddComment --> Notify
 ```
