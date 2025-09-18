@@ -12,10 +12,10 @@
 | メソッド | パス | 機能 |
 |-----------|------|------|
 | GET | /projects | プロジェクト一覧取得 |
-| GET | /projects/{id} | プロジェクト詳細取得 |
+| GET | /projects/{projectId} | プロジェクト詳細取得 |
 | POST | /projects | プロジェクト作成 |
-| PATCH | /projects/{id} | プロジェクト編集 |
-| DELETE | /projects/{id} | プロジェクト削除 |
+| PATCH | /projects/{projectId} | プロジェクト編集 |
+| DELETE | /projects/{projectId} | プロジェクト削除 |
 
 ## チケット
 
@@ -36,14 +36,14 @@
 | メソッド | パス | 機能 |
 |-----------|------|------|
 | GET | /users | ユーザー一覧取得 |
-| GET | /users/{id} | ユーザー詳細取得 |
+| GET | /users/{userId} | ユーザー詳細取得 |
 | POST | /users | ユーザー作成 |
-| PATCH | /users/{id} | ユーザー編集 |
-| DELETE | /users/{id} | ユーザー削除 |
+| PATCH | /users/{userId} | ユーザー編集 |
+| DELETE | /users/{userId} | ユーザー削除 |
 
 ## 通知
 
 | メソッド | パス | 機能 |
 |-----------|------|------|
 | GET | /notifications | ログインユーザー宛の通知一覧取得 |
-| PATCH | /notifications/{id}/read | 通知既読更新 |
+| PATCH | /notifications/{notificationId}/read | 通知既読更新 |
