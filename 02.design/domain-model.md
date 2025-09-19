@@ -46,16 +46,14 @@ classDiagram
       Description: string?
     }
 
-    %% プロジェクトメンバー
+    %% 値オブジェクト
     class ProjectMember {
-      <<Entity>>
-      ProjectId: Guid
+      <<ValueObject>>
       UserId: Guid
       Role: ProjectRole
     }
-
-    %% 値オブジェクト
     class ProjectRole {
+      <<ValueObject>>
       Value: RoleType
       RoleType
       - ProjectManager
@@ -135,8 +133,6 @@ classDiagram
 
   %% 関連
   Project "1" --> "many" Ticket : has
-  User "1" --> "many" ProjectMember : joins
-  Project "1" --> "many" ProjectMember : has
   User "1" --> "many" Ticket : assigned
   Ticket "1" *-- "many" Comment : contains
   User "1" --> "many" Comment : author
@@ -145,9 +141,10 @@ classDiagram
 
   %% 値オブジェクトの使用関係
   User --> Email
+  User --> Role
+  Project --> ProjectMember
+  ProjectMember --> ProjectRole
   Ticket --> TicketTitle
   Ticket --> Deadline
-  User --> Role
   Ticket --> TicketStatus
-  ProjectMember --> ProjectRole
 ```
