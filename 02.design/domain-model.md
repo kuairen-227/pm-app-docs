@@ -122,13 +122,11 @@ classDiagram
   %% ドメインルール
   note for User "
   Email: xxx@yyy.com 形式
-  Role: Admin / Manager / Member
   "
   note for Ticket "
   Deadline: 過去日付不可
-  TicketStatus: Todo（初期状態） / InProgress /  Resolved / Done
+  TicketStats: 初期状態 Todo
   CompletionCriteria: チケット完了とみなす条件
-  AssignmentHistory: チケット担当者変更の履歴（値オブジェクトのコレクション）
   "
 
   %% 関連
