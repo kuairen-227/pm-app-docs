@@ -9,7 +9,7 @@ classDiagram
       Id: Guid
       Name: string
       Email: Email
-      Role: Role
+      Role: SystemRoke
     }
 
     %% 通知
@@ -27,7 +27,7 @@ classDiagram
       <<ValueObject>>
       Value: string
     }
-    class Role {
+    class SystemRole {
       <<ValueObject>>
       Value: RoleType
       ---
@@ -139,7 +139,7 @@ classDiagram
 
   %% 値オブジェクトの使用関係
   User --> Email
-  User --> Role
+  User --> SystemRole
   Project --> ProjectMember
   ProjectMember --> ProjectRole
   Ticket --> TicketTitle
