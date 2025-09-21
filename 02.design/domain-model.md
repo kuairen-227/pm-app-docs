@@ -105,7 +105,7 @@ classDiagram
     }
     class Deadline {
       <<ValueObject>>
-      Value: DateTime
+      Value: Date
     }
     class TicketStatus {
       <<ValueObject>>
