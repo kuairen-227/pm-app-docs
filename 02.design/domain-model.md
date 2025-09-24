@@ -114,7 +114,7 @@ classDiagram
     class Notification {
       <<AggregateRoute>>
       Id: Guid
-      UserId: Guid
+      RecipientId: Guid
       Message: string
       IsRead: bool
       CreatedAt: DateTime
