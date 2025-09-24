@@ -12,16 +12,6 @@ classDiagram
       Role: SystemRoke
     }
 
-    %% 通知
-    class Notification {
-      <<Entity>>
-      Id: Guid
-      UserId: Guid
-      Message: string
-      IsRead: bool
-      CreatedAt: DateTime
-    }
-
     %% 値オブジェクト
     class Email {
       <<ValueObject>>
@@ -119,6 +109,18 @@ classDiagram
     }
   }
 
+  namespace 通知集約 {
+    %% 通知
+    class Notification {
+      <<AggregateRoute>>
+      Id: Guid
+      UserId: Guid
+      Message: string
+      IsRead: bool
+      CreatedAt: DateTime
+    }
+  }
+
   %% ドメインルール
   note for User "
   Email: xxx@yyy.com 形式
@@ -135,7 +137,7 @@ classDiagram
   Ticket "1" *-- "many" Comment : contains
   User "1" --> "many" Comment : author
   Ticket "1" *-- "many" AssignmentHistory : contains
-  User "1" --> "many" Notification
+  User "1" --> "many" Notification : target
 
   %% 値オブジェクトの使用関係
   User --> Email
