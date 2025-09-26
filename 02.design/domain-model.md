@@ -115,9 +115,19 @@ classDiagram
       <<AggregateRoute>>
       Id: Guid
       RecipientId: Guid
+      Category: NotificationCategory
       Message: string
       IsRead: bool
       CreatedAt: DateTime
+    }
+
+    %% 値オブジェクト
+    class NotificationCategory {
+      <<ValueObject>>
+      Value: Category
+      ---
+      Category
+      - 各種イベント
     }
   }
 
@@ -147,4 +157,5 @@ classDiagram
   Ticket --> TicketTitle
   Ticket --> Deadline
   Ticket --> TicketStatus
+  Notification --> NotificationCategory
 ```

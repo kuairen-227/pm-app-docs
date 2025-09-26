@@ -63,6 +63,7 @@ erDiagram
     notifications {
         GUID id PK
         GUID user_id FK
+        string category
         string message
         bool is_read
         GUID created_by
