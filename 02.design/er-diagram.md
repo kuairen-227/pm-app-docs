@@ -40,7 +40,7 @@ erDiagram
         GUID updated_by
         datetime updated_at
     }
-    comments {
+    ticket_comments {
         GUID id PK
         GUID ticket_id FK
         GUID author_id FK
@@ -64,6 +64,7 @@ erDiagram
         GUID id PK
         GUID user_id FK
         string category
+        GUID subject_id
         string message
         bool is_read
         GUID created_by
@@ -78,6 +79,6 @@ erDiagram
     users ||--o{ tickets : "1:n"
     tickets ||--o{ assignment_history : "1:n"
     users ||--o{ notifications : "1:n"
-    tickets ||--o{ comments : "1:n"
-    users ||--o{ comments : "1:n"
+    tickets ||--o{ ticket_comments : "1:n"
+    users ||--o{ ticket_comments : "1:n"
 ```
