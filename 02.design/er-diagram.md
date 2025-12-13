@@ -31,6 +31,7 @@ erDiagram
         GUID id PK
         GUID project_id FK
         string title
+        text description
         date deadline
         string status
         GUID assignee_id FK
@@ -44,7 +45,7 @@ erDiagram
         GUID id PK
         GUID ticket_id FK
         GUID author_id FK
-        string content
+        text content
         datetime created_at
         datetime updated_at
     }
