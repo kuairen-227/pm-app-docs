@@ -140,6 +140,9 @@ classDiagram
   TicketStats: 初期状態 Todo
   CompletionCriteria: チケット完了とみなす条件
   "
+  note for Notification "
+  SubjectId: 通知の参照元となるID
+  "
 
   %% 関連
   Project "1" --> "many" Ticket : has
