@@ -58,11 +58,18 @@ classDiagram
       Id: Guid
       ProjectId: Guid
       Title: TicketTitle
+      Description: TicketDescription
       Deadline: Deadline
       Status: TicketStatus
       AssigneeId: Guid?
       CompletionCriteria: string?
       Comments: List<Comment>
+    }
+
+    %% チケット説明
+    class TicketDescription {
+      <<ValueObject>>
+      Value: string
     }
 
     %% コメント
@@ -158,6 +165,7 @@ classDiagram
   Project --> ProjectMember
   ProjectMember --> ProjectRole
   Ticket --> TicketTitle
+  Ticket --> TicketDescription
   Ticket --> Deadline
   Ticket --> TicketStatus
   Notification --> NotificationCategory
