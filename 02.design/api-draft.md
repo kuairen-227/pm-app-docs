@@ -4,8 +4,9 @@
 
 | メソッド | パス | 機能 |
 |-----------|------|------|
-| POST | /auth/login | ユーザーログイン（JWT発行） |
-| POST | /auth/logout | ログアウト（トークン無効化） |
+| POST | /auth/login | ユーザーログイン（トークン発行） |
+| POST | /auth/refresh | トークンリフレッシュ |
+| POST | /auth/logout | ログアウト（リフレッシュトークン無効化） |
 
 ## プロジェクト
 
@@ -40,7 +41,6 @@
 | メソッド | パス | 機能 |
 |-----------|------|------|
 | GET | /users | ユーザー一覧取得 |
-| GET | /users/{userId} | ユーザー詳細取得 |
 | POST | /users | ユーザー作成 |
 | PATCH | /users/{userId} | ユーザー編集 |
 | DELETE | /users/{userId} | ユーザー削除 |
