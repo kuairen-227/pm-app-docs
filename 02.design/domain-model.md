@@ -59,18 +59,13 @@ classDiagram
       ProjectId: Guid
       Title: TicketTitle
       Description: TicketDescription
-      Deadline: Deadline
+      Schedule: TicketSchedule
       Status: TicketStatus
       AssigneeId: Guid?
       CompletionCriteria: string?
       Comments: List<Comment>
     }
 
-    %% チケット説明
-    class TicketDescription {
-      <<ValueObject>>
-      Value: string
-    }
 
     %% コメント
     class Comment {
@@ -100,9 +95,16 @@ classDiagram
       <<ValueObject>>
       Value: string
     }
-    class Deadline {
+    %% チケット説明
+    class TicketDescription {
       <<ValueObject>>
-      Value: Date
+      Value: string
+    }
+    %% チケットスケジュール
+    class TicketSchedule {
+      <<ValueObject>>
+      StartDate: Date?
+      EndDate: Date?
     }
     class TicketStatus {
       <<ValueObject>>
@@ -166,7 +168,7 @@ classDiagram
   ProjectMember --> ProjectRole
   Ticket --> TicketTitle
   Ticket --> TicketDescription
-  Ticket --> Deadline
+  Ticket --> TicketSchedule
   Ticket --> TicketStatus
   Notification --> NotificationCategory
 ```

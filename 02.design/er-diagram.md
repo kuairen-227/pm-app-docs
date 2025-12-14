@@ -32,7 +32,8 @@ erDiagram
         GUID project_id FK
         string title
         text description
-        date deadline
+        date start_date
+        date end_date
         string status
         GUID assignee_id FK
         string completion_criteria
