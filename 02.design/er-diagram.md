@@ -50,17 +50,13 @@ erDiagram
         datetime created_at
         datetime updated_at
     }
-    assignment_history {
+    ticket_histories {
         GUID id PK
         GUID ticket_id FK
-        GUID assignee_id FK
-        GUID previous_assignee_id FK
-        string change_type
-        datetime changed_at
-        GUID created_by
-        datetime created_at
-        GUID updated_by
-        datetime updated_at
+        GUID actor_id
+        string action
+        jsonb changes
+        datetime occurred_at
     }
     notifications {
         GUID id PK
@@ -79,7 +75,7 @@ erDiagram
     projects ||--o{ project_members : "1:n"
     projects ||--o{ tickets : "1:n"
     users ||--o{ tickets : "1:n"
-    tickets ||--o{ assignment_history : "1:n"
+    tickets ||--o{ ticket_histories : "1:n"
     users ||--o{ notifications : "1:n"
     tickets ||--o{ ticket_comments : "1:n"
     users ||--o{ ticket_comments : "1:n"

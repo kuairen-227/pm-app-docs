@@ -76,18 +76,49 @@ classDiagram
       Content: string
     }
 
-    %% 担当履歴
-    class AssignmentHistory {
-      <<ValueObject>>
-      ChangeType: AssignmentEventType
-      AssigneeId: Guid?
-      PreviousAsigneeId: Guid?
-      ChangedAt: DateTime
+    %% チケット操作履歴
+    class TicketHistory {
+      <<Entity>>
+      Id: Guid
+      TicketId: Guid
+      ActorId: Guid
+      OccurredAt: DateTime
+      Action: TicketHistoryAction
       ---
-      AssignmentEventType
-      - Assigned
-      - UnAssigned
-      - Changed
+      TicketHistoryType
+      - TicketCreated
+      - TicketUpdated
+      - TicketCommentAdded
+    }
+
+    %% チケット操作履歴内容
+    class TicketHistoryChange {
+      <<Abstract>>
+    }
+
+    class TitleChanged {
+      Before: TicketTitle?
+      After: TicketTitle
+    }
+    class DescriptionChanged {
+      Before: TicketDescription?
+      After: TicketDescription
+    }
+    class ScheduleChanged {
+      Before: TicketSchedule?
+      After: TicketSchedule?
+    }
+    class StatusChanged {
+      Before: TicketStatus?
+      After: TicketStatus
+    }
+    class AssigneeChanged {
+      Before: Guid?
+      After: Guid?
+    }
+    class CompletionCriteriaChanged {
+      Before: string?
+      After: string?
     }
 
     %% 値オブジェクト
@@ -158,8 +189,15 @@ classDiagram
   User "1" --> "many" Ticket : assigned
   Ticket "1" *-- "many" Comment : contains
   User "1" --> "many" Comment : author
-  Ticket "1" *-- "many" AssignmentHistory : contains
+  Ticket "1" *-- "many" TicketHistory : has
+  TicketHistory "1" *-- "many" TicketHistoryChange : contains
   User "1" --> "many" Notification : target
+  TicketHistoryChange <|-- TitleChanged
+  TicketHistoryChange <|-- DescriptionChanged
+  TicketHistoryChange <|-- ScheduleChanged
+  TicketHistoryChange <|-- StatusChanged
+  TicketHistoryChange <|-- AssigneeChanged
+  TicketHistoryChange <|-- CompletionCriteriaChanged
 
   %% 値オブジェクトの使用関係
   User --> Email
