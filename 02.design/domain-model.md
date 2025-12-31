@@ -96,31 +96,6 @@ classDiagram
       <<Abstract>>
     }
 
-    class TitleChanged {
-      Before: TicketTitle?
-      After: TicketTitle
-    }
-    class DescriptionChanged {
-      Before: TicketDescription?
-      After: TicketDescription
-    }
-    class ScheduleChanged {
-      Before: TicketSchedule?
-      After: TicketSchedule?
-    }
-    class StatusChanged {
-      Before: TicketStatus?
-      After: TicketStatus
-    }
-    class AssigneeChanged {
-      Before: Guid?
-      After: Guid?
-    }
-    class CompletionCriteriaChanged {
-      Before: string?
-      After: string?
-    }
-
     %% 値オブジェクト
     class TicketTitle {
       <<ValueObject>>
