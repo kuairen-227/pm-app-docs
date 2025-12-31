@@ -26,6 +26,10 @@ erDiagram
         Guid project_id FK
         Guid user_id FK
         string role
+        GUID created_by
+        datetime created_at
+        GUID updated_by
+        datetime updated_at
     }
     tickets {
         GUID id PK
@@ -36,7 +40,16 @@ erDiagram
         date end_date
         string status
         GUID assignee_id FK
-        string completion_criteria
+        GUID created_by
+        datetime created_at
+        GUID updated_by
+        datetime updated_at
+    }
+    ticket_completion_criteria {
+        GUID id PK
+        GUID ticket_id FK
+        string criterion
+        bool is_completed
         GUID created_by
         datetime created_at
         GUID updated_by
@@ -47,7 +60,9 @@ erDiagram
         GUID ticket_id FK
         GUID author_id FK
         text content
+        GUID created_by
         datetime created_at
+        GUID updated_by
         datetime updated_at
     }
     ticket_histories {
@@ -57,6 +72,10 @@ erDiagram
         string action
         jsonb changes
         datetime occurred_at
+        GUID created_by
+        datetime created_at
+        GUID updated_by
+        datetime updated_at
     }
     notifications {
         GUID id PK
@@ -75,6 +94,7 @@ erDiagram
     projects ||--o{ project_members : "1:n"
     projects ||--o{ tickets : "1:n"
     users ||--o{ tickets : "1:n"
+    tickets ||--o{ ticket_completion_criteria : "1:n"
     tickets ||--o{ ticket_histories : "1:n"
     users ||--o{ notifications : "1:n"
     tickets ||--o{ ticket_comments : "1:n"

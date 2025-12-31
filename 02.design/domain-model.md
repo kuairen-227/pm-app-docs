@@ -62,13 +62,20 @@ classDiagram
       Schedule: TicketSchedule
       Status: TicketStatus
       AssigneeId: Guid?
-      CompletionCriteria: string?
-      Comments: List<Comment>
+      CompletionCriteria: List<TicketCompletioinCriterion>
+      Comments: List<TicketComment>
     }
 
+    %% チケット完了条件
+    class TicketCompletionCriterion {
+      <<Entity>>
+      Id: Guid
+      Criterion: string
+      IsCompleted: bool
+    }
 
-    %% コメント
-    class Comment {
+    %% チケットコメント
+    class TicketComment {
       <<Entity>>
       Id: Guid
       TicketId: Guid
@@ -91,12 +98,9 @@ classDiagram
       - TicketCommentAdded
     }
 
-    %% チケット操作履歴内容
-    class TicketHistoryChange {
-      <<Abstract>>
-    }
 
     %% 値オブジェクト
+    %% チケットタイトル
     class TicketTitle {
       <<ValueObject>>
       Value: string
@@ -112,6 +116,7 @@ classDiagram
       StartDate: Date?
       EndDate: Date?
     }
+    %% チケットステータス
     class TicketStatus {
       <<ValueObject>>
       Value: StatusType
@@ -121,6 +126,13 @@ classDiagram
       - InProgress
       - Resolved
       - Done
+    }
+    %% チケット操作履歴内容
+    class TicketHistoryChange {
+      <<ValueObject>>
+      Field: TicketField
+      Before: TicketHistoryChangeValue
+      After: TicketHistoryChangeValue
     }
   }
 
@@ -155,6 +167,10 @@ classDiagram
   TicketStats: 初期状態 Todo
   CompletionCriteria: チケット完了とみなす条件
   "
+  note for TicketHistoryChange "
+  Field: 変更対象となるTicketの項目
+  TicketHistoryChangeValue: 変更内容
+  "
   note for Notification "
   SubjectId: 通知の参照元となるID
   "
@@ -162,17 +178,12 @@ classDiagram
   %% 関連
   Project "1" --> "many" Ticket : has
   User "1" --> "many" Ticket : assigned
-  Ticket "1" *-- "many" Comment : contains
-  User "1" --> "many" Comment : author
+  Ticket "1" *-- "many" TicketCompletionCriterion : has
+  Ticket "1" *-- "many" TicketComment : contains
+  User "1" --> "many" TicketComment : author
   Ticket "1" *-- "many" TicketHistory : has
   TicketHistory "1" *-- "many" TicketHistoryChange : contains
   User "1" --> "many" Notification : target
-  TicketHistoryChange <|-- TitleChanged
-  TicketHistoryChange <|-- DescriptionChanged
-  TicketHistoryChange <|-- ScheduleChanged
-  TicketHistoryChange <|-- StatusChanged
-  TicketHistoryChange <|-- AssigneeChanged
-  TicketHistoryChange <|-- CompletionCriteriaChanged
 
   %% 値オブジェクトの使用関係
   User --> Email
