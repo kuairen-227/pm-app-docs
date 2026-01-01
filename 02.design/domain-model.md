@@ -165,7 +165,16 @@ classDiagram
   note for Ticket "
   Deadline: 過去日付不可
   TicketStats: 初期状態 Todo
-  CompletionCriteria: チケット完了とみなす条件
+  "
+  note for TicketCompletionCriterion "
+  ・チケットは 0 個以上の完了条件を持てる
+  ・完了条件が存在する場合、すべて完了しているときに限り Done 状態になれる
+  ・完了条件が 1 つでも未完了の状態で Done に変更することはできない
+  ・Done 状態のチケットに新しい完了条件を追加した場合、ステータスは InProgress に戻る
+  ・完了済みの完了条件を未完了に戻した場合、ステータスは InProgress に戻る
+  ・完了条件がすべて完了した時点で、ステータスは自動的に Done になる
+  ・ステータスの自動遷移と手動変更は 両立 させ、ユーザーに自由を与える
+  ・完了条件はチェックリストであり、同一内容の重複を許容する
   "
   note for TicketHistoryChange "
   Field: 変更対象となるTicketの項目
